@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327102959) do
+ActiveRecord::Schema.define(version: 20170327120319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,6 @@ ActiveRecord::Schema.define(version: 20170327102959) do
     t.index ["issuing_person"], name: "index_expense_activities_on_issuing_person", using: :btree
     t.index ["payment_type_id"], name: "index_expense_activities_on_payment_type_id", using: :btree
     t.index ["receiving_person"], name: "index_expense_activities_on_receiving_person", using: :btree
-  end
-
-  create_table "models", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "payment_types", force: :cascade do |t|
