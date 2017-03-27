@@ -1,5 +1,7 @@
 require 'sinatra'
+require 'sinatra/activerecord'
 require 'haml'
+require './config/environments'
 
 # Render index page
 get '/' do

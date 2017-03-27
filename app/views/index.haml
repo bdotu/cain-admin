@@ -13,16 +13,49 @@
     / Font
     -# %link{:href => "//fonts.googleapis.com/css?family=Raleway:400,300,600", :rel => "stylesheet", :type => "text/css"}
 
-    / CSS
-    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/uikit.min.css", :rel => "stylesheet", :type => "text/css"}
-    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/accordion.almost-flat.min.css", :rel => "stylesheet", :type => "text/css"}
-    %link{:href => "https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/css/components/sticky.almost-flat.min.css", :rel => "stylesheet", :type => "text/css"}
+    / Bootstrap CSS
+    %link{:href => "/bootstrap.min.css", :rel => "stylesheet"}
 
     / JS
     %script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"}
-    %script{:type => "text/javascript", :src => "https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/uikit.min.js"}
-    %script{:type => "text/javascript", :src => "https://cdnjs.cloudflare.com/ajax/libs/uikit/2.27.2/js/components/sticky.min.js"}
+    %script{:type => "text/javascript", :src => "/bootstrap.min.js"}
 
   %body
-    %p
-    CAIN Admin Portal
+    .container-fluid
+      %ul.nav.nav-tabs
+        %li.active
+          %a{:href => "#home", "data-toggle" => "tab"} Home
+        %li
+          %a{:href => "#item1", "data-toggle" => "tab"} Data Update
+        %li
+          %a{:href => "#item2", "data-toggle" => "tab"} Data Export
+      .tab-content
+        #home.tab-pane.fade.in.active
+          %h3 Home
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        #item1.tab-pane.fade
+          %h3 Data Update
+          %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        #item2.tab-pane.fade
+          %h3 Data Export
+          %p Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+    -# %nav.navbar.navbar-inverse.navbar-default{:role => "navigation"}
+    -#   .container-fluid
+    -#     / Brand and toggle get grouped for better mobile display
+    -#     .navbar-header
+    -#       %button.navbar-toggle.collapsed{"data-target" => "#admin-navbar-collapse", "data-toggle" => "collapse", :type => "button", "aria-expanded" => "false"}
+    -#         %span.sr-only Toggle navigation
+    -#         %span.icon-bar
+    -#         %span.icon-bar
+    -#         %span.icon-bar
+    -#       %a.navbar-brand{:href => "#"} CAIN Logo
+    -#     / Collect the nav links, forms, and other content for toggling
+    -#     #admin-navbar-collapse.collapse.navbar-collapse
+    -#       %ul.nav.navbar-nav
+    -#         %li.active
+    -#           %a{:href => "#"} Data Read
+    -#         %li
+    -#           %a{:href => "#"} Data Input
+    -#         %li
+    -#           %a{:href => "#"} Data Export

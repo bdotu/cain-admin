@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'activesupport'
-
-# HAML GEM
+gem 'activerecord'
+gem 'sinatra-activerecord'
+gem 'rake'
 gem 'haml'
+gem 'pg'
 
-# This gem updates the server automatcally when changes automatically. No need to restart server
-gem 'shotgun'
+
+group :development do
+  gem 'shotgun'
+end
