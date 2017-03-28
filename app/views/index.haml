@@ -1,61 +1,38 @@
-!!!
 %html{:lang => "en"}
-  %head
-    / Basic Page Needs
-    %meta{:charset => "utf-8"}
-    %title CAIN - Admin Portal
-    %meta{:name => "description", :content => "CAIN Admin Portal"}
-    %meta{:name => "author", :content => "Bright"}
-
-    / Mobile Specific Metas
-    %meta{:name => "viewport", :content => "width=device-width,initial-scale=1"}
-
-    / Font
-    -# %link{:href => "//fonts.googleapis.com/css?family=Raleway:400,300,600", :rel => "stylesheet", :type => "text/css"}
-
-    / Bootstrap CSS
-    %link{:href => "/bootstrap.min.css", :rel => "stylesheet"}
-
-    / JS
-    %script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"}
-    %script{:type => "text/javascript", :src => "/bootstrap.min.js"}
+  = haml :head
 
   %body
-    .container-fluid
-      %ul.nav.nav-tabs
-        %li.active
-          %a{:href => "#home", "data-toggle" => "tab"} Home
-        %li
-          %a{:href => "#item1", "data-toggle" => "tab"} Data Update
-        %li
-          %a{:href => "#item2", "data-toggle" => "tab"} Data Export
-      .tab-content
-        #home.tab-pane.fade.in.active
-          %h3 Home
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        #item1.tab-pane.fade
-          %h3 Data Update
-          %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-        #item2.tab-pane.fade
-          %h3 Data Export
-          %p Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    %nav.navbar.navbar-inverse.navbar-default{:role => "navigation"}
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"data-target" => "#admin-navbar-collapse", "data-toggle" => "collapse", :type => "button", "aria-expanded" => "false"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          .navbar-brand
+            %img{:src => "cain_logo.png", :width => "40"}
+          /Use glyphicon logout
+          -# %a.navbar-brand.pull-right{:href => "#"} Logout
+        / Collect the nav links, forms, and other content for toggling
+        #admin-navbar-collapse.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            -# %li.active
+              %a{:href => "#"} Data Read
+            -# %li
+              %a{:href => "#"} Logout
+            -# %li
+              %a{:href => "#"} Data Export
 
-    -# %nav.navbar.navbar-inverse.navbar-default{:role => "navigation"}
-    -#   .container-fluid
-    -#     / Brand and toggle get grouped for better mobile display
-    -#     .navbar-header
-    -#       %button.navbar-toggle.collapsed{"data-target" => "#admin-navbar-collapse", "data-toggle" => "collapse", :type => "button", "aria-expanded" => "false"}
-    -#         %span.sr-only Toggle navigation
-    -#         %span.icon-bar
-    -#         %span.icon-bar
-    -#         %span.icon-bar
-    -#       %a.navbar-brand{:href => "#"} CAIN Logo
-    -#     / Collect the nav links, forms, and other content for toggling
-    -#     #admin-navbar-collapse.collapse.navbar-collapse
-    -#       %ul.nav.navbar-nav
-    -#         %li.active
-    -#           %a{:href => "#"} Data Read
-    -#         %li
-    -#           %a{:href => "#"} Data Input
-    -#         %li
-    -#           %a{:href => "#"} Data Export
+    %ul.nav.nav-tabs{:id => "datatabs"}
+      %li.active
+        %a{:href => "#home", "data-toggle" => "tab"} Home
+      %li
+        %a{:href => "#read_data", "data-toggle" => "tab"} Read Data
+      %li
+        %a{:href => "#edit_data", "data-toggle" => "tab"} Edit Data
+    .tab-content
+      = haml :home
+      = haml :read_data
+      = haml :edit_data

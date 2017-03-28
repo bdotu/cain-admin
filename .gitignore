@@ -1,2 +1,3 @@
 app/models/drop_model.rb
 db/migrate/*_drop_models.rb
+public/changetab.js
