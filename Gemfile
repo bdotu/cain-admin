@@ -6,6 +6,7 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'haml'
 gem 'pg'
+gem 'heroku'
 
 
 group :development do
