@@ -1,3 +1,35 @@
 #edit_data.tab-pane.fade
-  %h3 Data Export
-  %p Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  .panel.panel-default
+    .panel-heading
+      %p{:class => "lead panel-title"} Create/Add/Update/Delete Data
+
+    .panel-body
+      -# %ul
+        %li Select the activity to perform; fill out the corresponding form (if any); and submit to database.
+
+      .row
+        .col-md-7
+          %h5{:class => "text-muted"} ADD
+          .btn-group.btn-group-justified{:role => "group", "aria-label" => "..."}
+            .button{:type => "button", :class => "btn btn-default"} Add Person
+            .button{:type => "button", :class => "btn btn-default"} Add Project
+            .button{:type => "button", :class => "btn btn-default"} Add Expense
+
+      %br
+
+      .row
+        .col-md-7
+          %h5{:class => "text-muted"} UPDATE
+          .btn-group.btn-group-justified{:role => "group", "aria-label" => "..."}
+            .button{:type => "button", :class => "btn btn-default"} Update Person
+            .button{:type => "button", :class => "btn btn-default"} Update Project
+            .button{:type => "button", :class => "btn btn-default"} Update Expense
+
+      %br
+
+      .row
+        .col-md-7
+          %h5{:class => "text-muted"} DELETE
+          .button{:type => "button", :class => "btn btn-danger"} Delete Person
+          .button{:type => "button", :class => "btn btn-danger"} Delete Project
+          .button{:type => "button", :class => "btn btn-danger"} Delete Expense
