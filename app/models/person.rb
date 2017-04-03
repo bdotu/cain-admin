@@ -12,5 +12,5 @@ class Role < ActiveRecord::Base
   has_many :people
 end
 
-class SubscriptionInfo < ActiveRecord::Base
+class Subscription < ActiveRecord::Base
 end

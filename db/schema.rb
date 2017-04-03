@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170327120319) do
     t.string  "state"
     t.integer "zip"
     t.string  "country"
-    t.integer "phone"
+    t.string  "phone"
     t.string  "email"
     t.string  "company"
     t.string  "date_of_first_contact"
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20170327120319) do
     t.string "role_name"
   end
 
-  create_table "subscription_info", force: :cascade do |t|
+  create_table "subscriptions", force: :cascade do |t|
     t.string  "email"
     t.string  "subscription_info"
     t.boolean "subscribed"

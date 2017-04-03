@@ -12,7 +12,7 @@ class CreatePeople < ActiveRecord::Migration[5.0]
       t.string :state
       t.integer :zip
       t.string :country
-      t.integer :phone
+      t.string :phone
       t.string :email
       t.string :company
       t.string :date_of_first_contact
@@ -23,11 +23,12 @@ class CreatePeople < ActiveRecord::Migration[5.0]
       t.string :role_name
     end
 
-    create_table :subscription_info do |t|
+    create_table :subscriptions do |t|
       t.string :email
       t.string :subscription_info
       t.boolean :subscribed
     end
+
   end
 
 end

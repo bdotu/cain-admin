@@ -5,7 +5,8 @@
     .col-md-4{:class => "text-center"}
       %h5 People of CAIN
       %p Find out information about the CAIN family.
-      .button{:type => "button", :class => "btn btn-info"} View People
+      -# = link_to "View People", :class => "btn btn-info"
+      %a{:type => "button", :class => "btn btn-info", :href => "people"} View People
 
   %hr{:class => "divider"}
 
@@ -15,7 +16,7 @@
     .col-md-4{:class => "text-center"}
       %h5 Our Projects
       %p Find out past, current, and future project information.
-      .button{:type => "button", :class => "btn btn-info"} View Projects
+      %a{:type => "button", :class => "btn btn-info", :href => "projects"} View Projects
 
   %hr{:class => "divider"}
 
@@ -25,4 +26,4 @@
     .col-md-4{:class => "text-center"}
       %h5 Our Expenses
       %p Find out information about expenses.
-      .button{:type => "button", :class => "btn btn-info"} View Expenses
+      %a{:type => "button", :class => "btn btn-info", :href => "expenses"} View Expenses

@@ -1,0 +1,22 @@
+%nav.navbar.navbar-inverse.navbar-default{:role => "navigation"}
+  .container-fluid
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-target" => "#admin-navbar-collapse", "data-toggle" => "collapse", :type => "button", "aria-expanded" => "false"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      .navbar-brand
+        %img{:src => "cain_logo.png", :width => "40"}
+      /Use glyphicon logout
+      -# %a.navbar-brand.pull-right{:href => "#"} Logout
+    / Collect the nav links, forms, and other content for toggling
+    #admin-navbar-collapse.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        -# %li.active
+          %a{:href => "#"} Data Read
+        -# %li
+          %a{:href => "#"} Logout
+        -# %li
+          %a{:href => "#"} Data Export

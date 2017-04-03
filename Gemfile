@@ -6,6 +6,8 @@ gem 'sinatra-activerecord'
 gem 'rake'
 gem 'haml'
 gem 'pg'
+gem 'require_all'
+gem 'roo' #for parsing spreadsheets
 
 
 
