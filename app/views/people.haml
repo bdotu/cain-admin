@@ -4,26 +4,44 @@
   %body
     = haml :navbar
 
-    %h1 Listing Members
+    %h1{:class => "lead"}
+      %u People of CAIN
+
+    - @people.each do |person|
+      .row
+        .col-md-2
+          %img{:src => "user.png", :alt => "User", :class => "img-responsive center-block img-rounded", :width => "64"}
+        .col-md-3{:class => "text-center"}
+          %h5= person.first_name + " " + person.last_name
+          %p= person.role.role_name
+          %p= person.email
+        .col-md-3{:class => "text-center"}
+          %a{:type => "button", :class => "btn btn-default", "data-toggle" => "modal", "data-target" => "#view-person"} View More
+
+          -# View More Modal
+          .modal.fade{:id => "view-person"}
+            .modal-dialog{:role => "document"}
+              .modal-content
+                .modal-header
+                  %h4{:class => "modal-title"}
+                    = person.first_name + " " + person.last_name
+                    %button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"} &times;
+                .modal-body
+                  -# %table
+                    %thead
+                      %tr
+                        %th Address
+                        %th Phone
+                        %th Email
+                        %th Company
+                        %th First Contact
+                        %th Comments
+                .modal-footer
+                  %button{:type => "button", :class => "btn btn-secondary", "data-dismiss" => "modal"} Close
+
+          %a{:type => "button", :class => "btn btn-info"} Edit
+          %a{:type => "button", :class => "btn btn-danger"} Delete
+      %hr{:class => "divider"}
 
     -# %p{:id => "notice"}
       = flash[:notice]
-
-    %table{:class => "table table-striped"}
-      %thead
-        %tr
-          %th First Name
-          %th Last Name
-          %th Email
-          %th Role
-      %tbody
-        - @people.each do |person|
-          %tr
-            %td
-              = person.first_name
-            %td
-              = person.last_name
-            %td
-              = person.email
-            %td
-              = person.role.role_name
