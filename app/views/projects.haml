@@ -3,3 +3,23 @@
 
   %body
     = haml :navbar
+    %h1 Listing Projects
+
+    -# %p{:id => "notice"}
+      = flash[:notice]
+
+    %table{:class => "table table-striped"}
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th Total Participants
+      %tbody
+        - @projects.each do |project|
+          %tr
+            %td
+              = project.title
+            %td
+              = project.description
+            %td
+              = project.total_participants
