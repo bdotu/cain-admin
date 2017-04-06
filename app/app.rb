@@ -6,6 +6,8 @@ require 'rack-flash'
 require 'require_all'
 require_all './app/models'
 
+set :public_folder, 'public'
+
 # Render index page
 get '/' do
   # db_time = database.connection.execute('SELECT CURRENT_TIMESTAMP').first['now']
