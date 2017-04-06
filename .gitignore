@@ -1,5 +1,7 @@
 app/models/drop_model.rb
 db/migrate/*_drop_models.rb
 public/changetab.js
+public/custom.js
 config/Procfile
 misc/*
+app/views/edit_data.haml

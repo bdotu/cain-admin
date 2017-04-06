@@ -4,8 +4,51 @@
   %body
     = haml :navbar
 
-    %h1{:class => "lead"}
-      %u People of CAIN
+    %ul{:class => "list-inline"}
+      %li
+        %h1{:class => "lead"}People of CAIN
+      %li
+        %a{:type => "button", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#add-person"} Add New Person
+
+        -# .modal.fade{:id => "add-person"}
+          .modal-dialog
+            .modal-content
+              .modal-header
+                %h4{:class => "modal-title text-center"}
+                  Add New Person
+                  %button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"} &times;
+                  -# %h6{:id => "myModalLabel"}
+              .modal-body
+                .form-horizontal{:role => "form", :action => "/people/create", :method => "post"}
+                  - if @person.errors.any?
+                    #error_explanation
+                      %span
+                        = pluralize(@person.errors.count, "error")
+                        prohibited this person from being saved
+                  -# .row
+                    .col-md-3
+                      %dl
+                        %dt Address
+                        %dd
+                          = person.address + ", " + person.city + ", " + person.state + " " + person.zip.to_s + ", " + person.country
+                    %hr{:class => "divider"}
+                    .col-md-3
+                      %dl
+                        %dt Phone
+                        %dd 62578980
+                    %hr{:class => "divider"}
+                    .col-md-3
+                      %dl
+                        %dt Company/Organisation
+                        %dd Microsoft
+                    %hr{:class => "divider"}
+                    .col-md-3
+                      %dl
+                        %dt Comments
+                        %dd :))
+              .modal-footer
+                %button{:type => "button", :class => "btn btn-secondary", "data-dismiss" => "modal"} Close
+
 
     - @people.each do |person|
       .row
@@ -14,34 +57,15 @@
         .col-md-3{:class => "text-center"}
           %h5= person.first_name + " " + person.last_name
           %p= person.role.role_name
+          %p= person.phone
           %p= person.email
+          %p= person.address + ", " + person.city + ", " + person.state + " " + person.zip.to_s + ", " + person.country
         .col-md-3{:class => "text-center"}
-          %a{:type => "button", :class => "btn btn-default", "data-toggle" => "modal", "data-target" => "#view-person"} View More
-
-          -# View More Modal
-          .modal.fade{:id => "view-person"}
-            .modal-dialog{:role => "document"}
-              .modal-content
-                .modal-header
-                  %h4{:class => "modal-title"}
-                    = person.first_name + " " + person.last_name
-                    %button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"} &times;
-                .modal-body
-                  -# %table
-                    %thead
-                      %tr
-                        %th Address
-                        %th Phone
-                        %th Email
-                        %th Company
-                        %th First Contact
-                        %th Comments
-                .modal-footer
-                  %button{:type => "button", :class => "btn btn-secondary", "data-dismiss" => "modal"} Close
-
           %a{:type => "button", :class => "btn btn-info"} Edit
-          %a{:type => "button", :class => "btn btn-danger"} Delete
+          -# %form{:action => "/people/destroy/#{@person}", :method => "post"}
+          %input{:type => "submit", :class => "btn btn-danger", :value => "Delete", :onclick => "return confirm('Are you sure?')"}
       %hr{:class => "divider"}
+
 
     -# %p{:id => "notice"}
       = flash[:notice]

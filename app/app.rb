@@ -19,23 +19,20 @@ get '/people' do
   haml :people
 end
 
-# get '/people/new' do
-#   @person = Person.new
-#   haml :new_person
-# end
-#
-# get '/people/:id' do
+# post '/people/destroy/:id' do
 #   @person = Person.find(params[:id])
-#   haml :show_person
+#   @person.destroy
+#   redirect to("/people")
 # end
-#
+
 # post '/people/create' do
 #   @person = Person.new(params[:person])
 #   if @person.save
-#     flash[:notice] = "Person successfully created."
-#     redirect to("people/#{@person.id}")
+#     # flash[:notice] = "Person successfully created."
+#     redirect to("/people")
 #   else
-#     haml :new_person
+#     # haml :new_person
+#     haml :index
 # end
 
 # Projects CRUD

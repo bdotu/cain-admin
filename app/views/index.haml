@@ -9,9 +9,9 @@
         %a{:href => "#home", "data-toggle" => "tab"} HOME
       %li
         %a{:href => "#search_data", "data-toggle" => "tab"} SEARCH
-      %li
+      -# %li
         %a{:href => "#edit_data", "data-toggle" => "tab"} EDIT
     .tab-content
       = haml :home
       = haml :search_data
-      = haml :edit_data
+      -# = haml :edit_data
