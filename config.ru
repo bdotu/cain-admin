@@ -1,5 +1,5 @@
 require './app/app'
-require './public'
+require './public/*'
 
 run Sinatra::Application
 
