@@ -17,8 +17,10 @@ roles.each do |role|
 end
 
 people = [
-  {role_id: 1, title: "Ms.", first_name: "Daisy", middle_name: "D", last_name: "Isibor", address: "300 100th Ave NE", city: "Bellevue", state: "WA", zip: 98004, country: "US", phone: "515-708-719", email: "isibord@gmail.com ", company: "Microsoft", date_of_first_contact: "April 2013", comments: "Thanks :)"},
-  {role_id: 4, title: "Mr", first_name: "Bright", last_name: "Dotu", address: "1000 17th Ave N", city: "Nashville", state: "TN", zip: 37208, country: "US", phone: "615-602-5364", email: "bright@email.com", company: "Just Another Bot", date_of_first_contact: "June 2013"}
+  # {role_id: 1, title: "Ms.", first_name: "Daisy", middle_name: "D", last_name: "Isibor", address: "300 100th Ave NE", city: "Bellevue", state: "WA", zip: 98004, country: "US", phone: "515-708-719", email: "isibord@gmail.com ", company: "Microsoft", date_of_first_contact: "April 2013", comments: "Thanks :)"},
+  # {role_id: 4, title: "Mr", first_name: "Bright", last_name: "Dotu", address: "1000 17th Ave N", city: "Nashville", state: "TN", zip: 37208, country: "US", phone: "615-602-5364", email: "bright@email.com", company: "Just Another Bot", date_of_first_contact: "June 2013"},
+  {role_id: 3, title: "Ms.", first_name: "Daisy", middle_name: "D", last_name: "Isibor", address: "300 100th Ave NE", city: "Bellevue", state: "WA", zip: 98004, country: "US", phone: "515-708-719", email: "isibord@gmail.com ", company: "Yahoo", date_of_first_contact: "April 2013", comments: "Thanks :)"},
+  {role_id: 2, title: "Ms.", first_name: "Daisy", middle_name: "D", last_name: "Isibor", address: "300 100th Ave NE", city: "Bellevue", state: "WA", zip: 98004, country: "US", phone: "515-708-719", email: "isibord@gmail.com ", company: "Google", date_of_first_contact: "April 2013", comments: "Thanks :)"}
 ]
 
 people.each do |person|

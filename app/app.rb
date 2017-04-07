@@ -21,21 +21,22 @@ get '/people' do
   haml :people
 end
 
-# post '/people/destroy/:id' do
-#   @person = Person.find(params[:id])
-#   @person.destroy
-#   redirect to("/people")
-# end
+get '/people/:id' do
+  @person = Person.find(params[:id])
+  # @person.first_name
+end
 
-# post '/people/create' do
-#   @person = Person.new(params[:person])
-#   if @person.save
-#     # flash[:notice] = "Person successfully created."
-#     redirect to("/people")
-#   else
-#     # haml :new_person
-#     haml :index
-# end
+post '/people' do
+  @person = Person.create(role: params[:role], title: params[:title], first_name: params[:first_name], middle_name: params[:middle_name], last_name: params[:last_name], address: params[:address], city: params[:city], state: params[:state], zip: params[:zip], country: params[:country], phone: params[:phone], email: params[:email], company: params[:company], comments: params[:comments])
+  redirect to('/people')
+end
+
+post '/people/destroy/:id' do
+  @person = Person.find(params[:id])
+  @person.destroy
+  redirect '/people'
+end
+
 
 # Projects CRUD
 get '/projects' do

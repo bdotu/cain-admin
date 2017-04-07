@@ -10,7 +10,7 @@
       %li
         %a{:type => "button", :class => "btn btn-primary", "data-toggle" => "modal", "data-target" => "#add-person"} Add New Person
 
-        -# .modal.fade{:id => "add-person"}
+        .modal.fade{:id => "add-person"}
           .modal-dialog
             .modal-content
               .modal-header
@@ -19,35 +19,58 @@
                   %button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"} &times;
                   -# %h6{:id => "myModalLabel"}
               .modal-body
-                .form-horizontal{:role => "form", :action => "/people/create", :method => "post"}
-                  - if @person.errors.any?
-                    #error_explanation
-                      %span
-                        = pluralize(@person.errors.count, "error")
-                        prohibited this person from being saved
-                  -# .row
-                    .col-md-3
-                      %dl
-                        %dt Address
-                        %dd
-                          = person.address + ", " + person.city + ", " + person.state + " " + person.zip.to_s + ", " + person.country
-                    %hr{:class => "divider"}
-                    .col-md-3
-                      %dl
-                        %dt Phone
-                        %dd 62578980
-                    %hr{:class => "divider"}
-                    .col-md-3
-                      %dl
-                        %dt Company/Organisation
-                        %dd Microsoft
-                    %hr{:class => "divider"}
-                    .col-md-3
-                      %dl
-                        %dt Comments
-                        %dd :))
+                %form{:action => "/people", :method => "post"}
+                  .form-group.has-danger
+                    %select{:class => "form-control", :name => "role"}
+                      %option{:value => 0} Select Role
+                      %option{:value => 1} Board Member
+                      %option{:value => 2} Donor
+                      %option{:value => 3} Member
+                      %option{:value => 4} Volunteer
+                      %option{:value => 5} Partner
+                      %option{:value => 6} Subscriber
+                  .form-group
+                    %select{:class => "form-control", :name => "title"}
+                      %option Title
+                      %option Mr
+                      %option Ms
+                      %option Mrs
+                  .form-group.has-danger
+                    %label{:class => "form-control-label"} First Name
+                    %input{:type => "name", :class => "form-control", :name => "first_name"}
+                  .form-group
+                    %label{:class => "form-control-label"} Middle Name
+                    %input{:class => "form-control", :type => "name", :name => "middle_name"}
+                  .form-group.has-danger
+                    %label{:class => "form-control-label"} Last Name
+                    %input{:class => "form-control", :type => "name", :name => "last_name"}
+                  .form-group.has-danger
+                    %label{:class => "form-control-label"} Email
+                    %input{:class => "form-control", :type => "email", :name => "email"}
+                  .form-group.has-danger
+                    %label{:class => "form-control-label"} Address
+                    %input{:class => "form-control", :type => "text", :name => "address"}
+                  .form-group.has-danger
+                    %label{:class => "form-control-label"} City
+                    %input{:class => "form-control", :type => "text", :name => "city"}
+                  .form-group
+                    %label{:class => "form-control-label"} State
+                    %input{:class => "form-control", :type => "text", :name => "state"}
+                  .form-group.has-danger
+                    %label{:class => "form-control-label"} Country
+                    %input{:class => "form-control", :type => "text", :name => "country"}
+                  .form-group
+                    %label{:class => "form-control-label"} Zip/Postal Code
+                    %input{:class => "form-control", :type => "text", :name => "zip"}
+                  .form-group
+                    %label{:class => "form-control-label"} Company
+                    %input{:class => "form-control", :type => "text", :name => "company"}
+                  .form-group
+                    %label{:class => "form-control-label"} Comments
+                    %input{:class => "form-control", :type => "text", :name => "comments"}
               .modal-footer
                 %button{:type => "button", :class => "btn btn-secondary", "data-dismiss" => "modal"} Close
+                %input{:type => "submit", :class => "btn btn-primary", :value => "Save"}
 
 
     - @people.each do |person|
@@ -62,8 +85,9 @@
           %p= person.address + ", " + person.city + ", " + person.state + " " + person.zip.to_s + ", " + person.country
         .col-md-3{:class => "text-center"}
           %a{:type => "button", :class => "btn btn-info"} Edit
-          -# %form{:action => "/people/destroy/#{@person}", :method => "post"}
-          %input{:type => "submit", :class => "btn btn-danger", :value => "Delete", :onclick => "return confirm('Are you sure?')"}
+          %form{:action => "/people/destroy/#{person.id}", :method => "post"}
+            %input{:type => "submit", :class => "btn btn-danger", :value => "Delete", :onclick => "return confirm('Are you sure?')"}
+          -# %a{:href => "/people/destroy/#{person.id}", :name => "_method", :type => "submit", :class => "btn btn-danger", :value => "delete", :onclick => "return confirm('Are you sure?')"} Delete
       %hr{:class => "divider"}
 
 
