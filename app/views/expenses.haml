@@ -3,23 +3,55 @@
 
   %body
     = haml :navbar
-    %h1 Listing Expenses
+    -# %h1 Listing Expenses
 
-    -# %p{:id => "notice"}
-      = flash[:notice]
+    .row
+      .col-md-4
+        %a{:type => "button", :class => "btn btn-default"} Add Expense
+        %a{:type => "button", :class => "btn btn-info"} Upload Expense
+        %a{:type => "button", :class => "btn btn-warning"} Download Expense
 
-    %table{:class => "table table-striped"}
-      %thead
-        %tr
-          %th Description
-          %th Gross(Amount +/-)
-          %th Payment Platform
-      %tbody
-        - @expenses.each do |expense|
-          %tr
-            %td
-              = expense.item_description
-            %td
-              = expense.gross_amount
-            %td
-              = expense.platform
+      -# .col-md-4
+        %a{:type => "button", :class => "btn btn-info"} Upload Expense
+      -# .col-md-4
+        %a{:type => "button", :class => "btn btn-info"} Download Expense
+
+    .row.justify-content-md-center
+      .col-md-12
+        .panel.panel-default
+          .panel-heading.text-center
+            %h5{:class => "lead"} Expense Activity
+          .panel-body
+            %table{:class => "table table-hover"}
+              %thead
+                %tr
+                  %th Description
+                  %th Gross Amount(+/-)
+                  %th Payment Type
+                  %th Issuer
+                  %th Receiver
+                  %th Location
+                  %th Receipt Received/Issued
+                  %th Platform
+                  %th Comments
+              %tbody
+                - @expenses.each do |expense|
+                  %tr
+                    %td
+                      = expense.item_description
+                    %td
+                      = expense.gross_amount
+                    %td
+                      = expense.payment_type
+                    %td
+                      = expense.issuing_person
+                    %td
+                      = expense.receiving_person
+                    %td
+                      = expense.location
+                    %td
+                      = expense.receipt_received_or_issued
+                    %td
+                      = expense.platform
+                    %td
+                      = expense.comments

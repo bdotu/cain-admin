@@ -37,19 +37,16 @@ ActiveRecord::Schema.define(version: 20170327120319) do
 
   create_table "expense_activities", force: :cascade do |t|
     t.float    "gross_amount"
-    t.integer  "payment_type_id"
+    t.string   "payment_type"
     t.text     "item_description"
-    t.integer  "issuing_person"
-    t.integer  "receiving_person"
+    t.string   "issuing_person"
+    t.string   "receiving_person"
     t.string   "location"
-    t.date     "receipt_received_or_issued"
+    t.text     "receipt_received_or_issued"
     t.string   "platform"
     t.text     "comments"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.index ["issuing_person"], name: "index_expense_activities_on_issuing_person", using: :btree
-    t.index ["payment_type_id"], name: "index_expense_activities_on_payment_type_id", using: :btree
-    t.index ["receiving_person"], name: "index_expense_activities_on_receiving_person", using: :btree
   end
 
   create_table "payment_types", force: :cascade do |t|

@@ -6,5 +6,5 @@ class ExpenseActivity < ActiveRecord::Base
 end
 
 class PaymentType < ActiveRecord::Base
-  belongs_to :expense_activity
+  belongs_to :expense_activities
 end
