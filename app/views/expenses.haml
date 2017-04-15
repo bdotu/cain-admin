@@ -5,16 +5,72 @@
     = haml :navbar
     -# %h1 Listing Expenses
 
-    .row
-      .col-md-4
-        %a{:type => "button", :class => "btn btn-default"} Add Expense
-        %a{:type => "button", :class => "btn btn-info"} Upload Expense
-        %a{:type => "button", :class => "btn btn-warning"} Download Expense
 
-      -# .col-md-4
-        %a{:type => "button", :class => "btn btn-info"} Upload Expense
-      -# .col-md-4
-        %a{:type => "button", :class => "btn btn-info"} Download Expense
+    %a{:type => "button", :class => "btn btn-default", "data-toggle" => "modal", "data-target" => "#add-expense"}
+      Add Expense
+    %a{:type => "button", :class => "btn btn-info"}
+      Upload Expense
+    %a{:type => "button", :class => "btn btn-warning"}
+      Download Expense
+
+    .modal.fade{:id => "add-expense"}
+      .modal-dialog
+        .modal-content
+          .modal-header
+            %h4{:class => "modal-title text-center"}
+              Add New Expense
+              %button{:type => "button", :class => "close", "data-dismiss" => "modal", "aria-label" => "Close"} &times;
+              -# %h6{:id => "myModalLabel"}
+          .modal-body
+            %form{:action => "/expenses/create", :method => "post"}
+              -# Error Handling
+              -# - if @expense.errors.any?
+                #error-explanation
+                  %span= pluralize(@expense.errors.count, "error") + " prohibited this expense from being saved:"
+                  %ul
+                    - @expense.errors.full_messages.each do |message|
+                      %li= message
+              -# Form fields
+              .form-group
+                %label{:class => "form-control-label"} Expense Description
+                %input{:type => "text", :class => "form-control", :required => "true", :name => "expense[item_description]"}
+              .form-group
+                %label{:class => "form-control-label"} Gross Amount
+                %input{:class => "form-control currency", :type => "number", :step => "0.01", :required => "true", :name => "expense[gross_amount]"}
+              .form-group
+                %label{:class => "form-control-label"} Payment Type
+                %select{:class => "form-control", :name => "expense[payment_type]"}
+                  %option{:value => nil} Select
+                  %option{:value => "check"} Check
+                  %option{:value => "cash"} Cash
+                  %option{:value => "paypal"} Paypal
+              .form-group
+                %label{:class => "form-control-label"} Issuing Person
+                %select{:class => "form-control", :required => "true", :name => "expense[issuing_person]"}
+                  %option{:value => nil} Select
+                  %option Daisy
+                  %option Bright
+              .form-group
+                %label{:class => "form-control-label"} Receiving Person
+                %input{:class => "form-control", :type => "text", :required => "true", :name => "expense[receiving_person]"}
+              .form-group
+                %label{:class => "form-control-label"} Location
+                %input{:class => "form-control", :type => "text", :required => "true", :name => "expense[location]"}
+              .form-group
+                %label{:class => "form-control-label"} Receipt Received/Issued
+                %input{:class => "form-control", :type => "text", :required => "true", :name => "expense[receipt_received_or_issued]", :placeholder => "dd-mm-yyyy"}
+              .form-group
+                %label{:class => "form-control-label"} Platform
+                %input{:class => "form-control", :type => "text", :required => "true", :name => "expense[platform]"}
+              .form-group
+                %label{:class => "form-control-label"} Comments
+                %input{:class => "form-control", :type => "text", :name => "expense[comments]"}
+              %hr{:class => "divider"}
+              %input{:type => "submit", :class => "btn btn-primary", :value => "Save", :onclick => "return confirm('Are you sure?')"}
+              %button{:type => "button", :class => "btn btn-secondary", "data-dismiss" => "modal"} Close
+          -# .modal-footer
+            %button{:type => "button", :class => "btn btn-secondary", "data-dismiss" => "modal"} Close
+
 
     .row.justify-content-md-center
       .col-md-12

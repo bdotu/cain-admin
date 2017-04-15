@@ -50,6 +50,13 @@ get '/expenses' do
   haml :expenses
 end
 
+post '/expenses/create' do
+  @expense = ExpenseActivity.new(params[:expense])
+  # puts "POOP"
+  @expense.save
+  redirect '/expenses'
+end
+
 # Error Handling
 not_found do
   haml :err
