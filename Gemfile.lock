@@ -53,6 +53,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord
   haml
+  nokogiri
   pg
   rack-flash3
   rake

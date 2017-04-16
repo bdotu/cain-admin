@@ -5,6 +5,7 @@ require './config/environments'
 require 'rack-flash'
 require 'require_all'
 require_all './app/models'
+require_all './app/helpers'
 
 set :public_folder, 'public'
 
@@ -27,7 +28,7 @@ get '/people/:id' do
 end
 
 post '/people' do
-  @person = Person.create(role: params[:role], title: params[:title], first_name: params[:first_name], middle_name: params[:middle_name], last_name: params[:last_name], address: params[:address], city: params[:city], state: params[:state], zip: params[:zip], country: params[:country], phone: params[:phone], email: params[:email], company: params[:company], comments: params[:comments])
+  # @person = Person.create(role: params[:role], title: params[:title], first_name: params[:first_name], middle_name: params[:middle_name], last_name: params[:last_name], address: params[:address], city: params[:city], state: params[:state], zip: params[:zip], country: params[:country], phone: params[:phone], email: params[:email], company: params[:company], comments: params[:comments])
   redirect to('/people')
 end
 
@@ -54,6 +55,19 @@ post '/expenses/create' do
   @expense = ExpenseActivity.new(params[:expense])
   # puts "POOP"
   @expense.save
+  redirect '/expenses'
+end
+
+get '/expenses/download' do
+
+  url = request.base_url + "/expenses"
+  data = HtmlToCsv.new
+  # puts url
+  file = data.convert(url)
+
+  content_type 'application/csv'
+  attachment file
+
   redirect '/expenses'
 end
 

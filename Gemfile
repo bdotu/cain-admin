@@ -9,6 +9,7 @@ gem 'pg'
 gem 'require_all'
 gem 'roo' #for parsing spreadsheets
 gem 'rack-flash3' #for flash messages
+gem 'nokogiri'
 
 
 
